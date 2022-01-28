@@ -1,5 +1,6 @@
-
-    # Zach
+module.exports = (name, github) => {
+    return  `
+    # ${name}
     
     ## Table of Contents
 
@@ -23,7 +24,8 @@
     ## Features
 
     ## Contributors
-    Zachsteuer98
+    ${github}
 
     ## license
-  
+  `;
+}

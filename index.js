@@ -1,13 +1,15 @@
 // TODO: Include packages needed for this application
+const fs = require('fs');
+const generatePage = require('../Professional-README-Generator/utils/page-template');
 
-// TODO: Create an array of questions for user input
-const questions = [];
+const profileDataArgs = process.argv.slice(2);
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+const [name, github] = profileDataArgs;
 
-// TODO: Create a function to initialize app
-function init() {}
+const GenerateREADME = generatePage(name, github);
 
-// Function call to initialize app
-init();
+fs.writeFile('./README.md', GenerateREADME, err => {
+  if (err) throw err;
+
+  console.log('Portfolio complete! Check out index.html to see the output!');
+});
