@@ -1,6 +1,6 @@
 module.exports = (name, github) => {
     return  `
-    # ${name}
+    # ${repoName}
     
     ## Table of Contents
 
@@ -14,17 +14,22 @@ module.exports = (name, github) => {
     
 
     ## Project Description
-    
+    ${answers.description}
+
     ## Installation Instructions
-    
+    ${answers.installation}
+
     ## Made With
+    ${answers.languages}
 
     ## Usage Information
-    
+    ${answers.usage}
+
     ## Features
+    ${answers.features}
 
     ## Contributors
-    ${github}
+    ${answers.contributors}
 
     ## license
   `;

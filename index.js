@@ -1,8 +1,18 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-// const fs = require('fs');
-// const generatePage = require('../Professional-README-Generator/utils/page-template');
-const promptUser = () => {
+const fs = require('fs');
+const generatePage = require('../Professional-README-Generator/utils/page-template');
+const promptUser = portfolioData => {
+    console.log(`
+=================
+Add a New README
+=================
+`);
+
+//if there is no README array property, create one
+if (!portfolioData) {
+    portfolioData = [];
+}
  return inquirer.prompt([
       {
           type: 'input',
@@ -41,16 +51,25 @@ const promptUser = () => {
           message: 'Who are the contributors for this application?'
       }
   ])
+  .then(projectData => {
+    portfolioData.push(projectData);
+    if (projectData.confirmAddProject) {
+      return promptUser(portfolioData);
+    } else {
+      return portfolioData;
+    }
+  });
 };
-  promptUser().then(answers => console.log(answers));
 
+promptUser()
+.then(portfolioData => {
+  console.log(portfolioData);
 
+const GenerateREADME = generatePage(portfolioData);
 
+fs.writeFile('./README.md', GenerateREADME, err => {
+  if (err) throw err;
 
-// const GenerateREADME = generatePage(name, github);
-
-// fs.writeFile('./README.md', GenerateREADME, err => {
-//   if (err) throw err;
-
-//   console.log('Portfolio complete! Check out index.html to see the output!');
-// });
+  console.log('Portfolio complete! Check out index.html to see the output!');
+})  
+});
