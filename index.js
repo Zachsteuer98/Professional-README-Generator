@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generatePage = require('../Professional-README-Generator/utils/page-template');
+const generatePage = require('./utils/page-template');
 const promptUser = portfolioData => {
     console.log(`
 =================
@@ -49,6 +49,12 @@ if (!portfolioData) {
           type: 'input',
           name: 'contributors',
           message: 'Who are the contributors for this application?'
+      },
+      {
+        type: 'list',
+        name: 'license',
+        message: 'Which license would you like to choose?',
+        choices: ['MIT', 'ISC']
       }
   ])
   .then(projectData => {
