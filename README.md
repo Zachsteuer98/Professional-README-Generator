@@ -13,7 +13,7 @@
     
 
 ## Project Description
-This is an application using Node and Inquirer to generate a README using the Command Line. This will allow for easy of use when genererating a README. By running Node in the index.js file, you will be prompted with questions regarding what is needed in your README file.
+This is an application using Node and Inquirer to generate a README using the Command Line. This will allow for ease of use when genererating a README. By running Node in the index.js file, you will be prompted with questions regarding what is needed in your README file.
 
 ## Installation Instructions
 Install Node, run node and answer the prompt questions.
